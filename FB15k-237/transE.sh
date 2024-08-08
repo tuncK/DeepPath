@@ -3,7 +3,7 @@
 echo $1
 relation=$1
 python for_transE.py $1
-echo "FIISHING BUILDING DATA"
+echo "FINISHING BUILDING DATA"
 echo $1
 ./Train_TransE -relation $1
 echo "TransE finished"

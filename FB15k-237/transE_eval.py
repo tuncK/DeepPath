@@ -1,14 +1,13 @@
-import cPickle
+# import cPickle
 import sys
 import numpy as np
 
 relation = sys.argv[1]
 
-dataPath_ = '/home/xwhan/RL_KB/data/FB15k-237/tasks/'  + relation
-
-ent_id_path = '/home/xwhan/RL_KB/data/FB15k-237/' + 'entity2id.txt'
-rel_id_path = '/home/xwhan/RL_KB/data/FB15k-237/' + 'relation2id.txt'
-test_data_path = '/home/xwhan/RL_KB/data/FB15k-237/tasks/'  + relation + '/sort_test.pairs'
+dataPath_ = './tasks/'  + relation
+ent_id_path = './entity2id.txt'
+rel_id_path = './relation2id.txt'
+test_data_path = dataPath_ + '/sort_test.pairs'
 
 f1 = open(ent_id_path)
 f2 = open(rel_id_path)
@@ -89,8 +88,8 @@ for idx, sample in enumerate(test_pairs):
 		#print np.mean(ranks)
 		aps.append(np.mean(ranks))
 		if len(aps) % 10 == 0:
-			print 'How many queries:', len(aps)
-			print np.mean(aps)
+			print('How many queries:', len(aps))
+			print(np.mean(aps))
 		y_true = []
 		y_score = []
 		query_samples = []
@@ -112,11 +111,11 @@ for idx, item in enumerate(score_label_ranked):
 	if item[1] == 1:
 		hits += 1
 	if idx == 9:
-		print 'P@10: ', hits/10.0
+		print('P@10: ', hits/10.0)
 	elif idx ==99:
-		print 'P@100: ', hits/100.0
+		print('P@100: ', hits/100.0)
 		break
 
 mean_ap = np.mean(aps)
-print 'MAP: ', mean_ap
+print('MAP: ', mean_ap)
 
